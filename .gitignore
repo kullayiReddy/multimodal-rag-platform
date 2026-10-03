@@ -28,6 +28,8 @@ data/faiss/*
 data/numpy_vectors/*
 data/*.db
 data/test_*
+backend/data/*
+!backend/data/.gitkeep
 
 # Docker Volumes & Logs
 postgres_data/
