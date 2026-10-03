@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+dist/
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local Environment & Secrets
+.env
+!.env.example
+
+# Local Data and Vector Indices
+data/uploads/*
+!data/uploads/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+data/images/*
+!data/images/.gitkeep
+data/chroma/*
+data/faiss/*
+data/numpy_vectors/*
+data/*.db
+data/test_*
+
+# Docker Volumes & Logs
+postgres_data/
+redis_data/
+*.log
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

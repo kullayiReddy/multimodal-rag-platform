@@ -1,0 +1,17 @@
+[
+  {
+    "query": "What was the revenue in Q3 according to the financial summary?",
+    "ground_truth": "In Q3 2024, total revenue was $15.5 million, with an operating income of $6.4 million.",
+    "expected_source": "Table 1: Quarterly Financial Summary"
+  },
+  {
+    "query": "Which division achieved the highest growth rate and what was it?",
+    "ground_truth": "Multimodal Document Intelligence achieved the highest growth rate at +65.4%, generating $26.8M in FY2024.",
+    "expected_source": "Table 2: Revenue Distribution by Product Division"
+  },
+  {
+    "query": "What are the components of the hybrid retrieval pipeline?",
+    "ground_truth": "The hybrid retrieval pipeline combines dense vector embeddings in ChromaDB/FAISS with sparse BM25 indices, merged via Reciprocal Rank Fusion (RRF) and scored with a Cross-Encoder Reranker.",
+    "expected_source": "Section 3: Distributed System Architecture"
+  }
+]
