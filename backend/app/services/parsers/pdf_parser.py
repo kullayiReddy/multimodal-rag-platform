@@ -7,7 +7,11 @@ import logging
 from pathlib import Path
 from typing import List, Optional
 
-import fitz  # PyMuPDF
+try:
+    import pymupdf
+except ImportError:
+    import fitz as pymupdf
+
 try:
     import pdfplumber
 except ImportError:
@@ -69,7 +73,7 @@ class PDFParser(BaseParser):
         self, file_path: Path, document_id: str, images_dir: Path, result: ParsedDocument
     ):
         """Extract text and images using PyMuPDF."""
-        doc = fitz.open(str(file_path))
+        doc = pymupdf.open(str(file_path))
         result.page_count = len(doc)
 
         for page_num in range(len(doc)):
@@ -137,7 +141,7 @@ class PDFParser(BaseParser):
         if pdfplumber is None:
             # Fallback to PyMuPDF find_tables()
             try:
-                doc = fitz.open(str(file_path))
+                doc = pymupdf.open(str(file_path))
                 for page_num, page in enumerate(doc):
                     tabs = page.find_tables()
                     for t_idx, tab in enumerate(tabs):
@@ -211,7 +215,7 @@ class PDFParser(BaseParser):
     def _extract_metadata(self, file_path: Path, result: ParsedDocument):
         """Extract PDF metadata."""
         try:
-            doc = fitz.open(str(file_path))
+            doc = pymupdf.open(str(file_path))
             meta = doc.metadata
             result.metadata = {
                 "title": meta.get("title", ""),
