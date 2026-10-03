@@ -13,15 +13,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR /app
 
-# Install Python requirements
+# Upgrade pip and install Python requirements
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel && \
+    pip install --no-cache-dir -r requirements.txt
 
 # Copy backend code
 COPY . .
 
 # Create data directories
-RUN mkdir -p /app/data/uploads /app/data/processed /app/data/images /app/data/chroma /app/data/faiss
+RUN mkdir -p /app/data/uploads /app/data/processed /app/data/images /app/data/chroma /app/data/faiss /app/data/numpy_vectors
 
 EXPOSE 8000
 
